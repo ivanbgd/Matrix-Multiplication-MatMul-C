@@ -26,7 +26,8 @@ void init_rand(double *a, const int n_rows_a, const int n_cols_a) {
     }
 }
 
-/* Dot product of two arrays, or matrix product */
+/* Dot product of two arrays, or matrix product
+ * Allocates and returns an array. */
 double *dot(const double *a, const int n_rows_a, const int n_cols_a, const double *b, const int n_rows_b, const int n_cols_b) {
     if (n_cols_a != n_rows_b) {
         printf("#columns A must be equal to #rows B!\n");

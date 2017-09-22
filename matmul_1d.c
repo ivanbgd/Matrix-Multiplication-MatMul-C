@@ -9,7 +9,7 @@
 #include <time.h>
 
 /* Initializes vector or matrix, sequentially, with indices. */
-void init_seq(double *a, const int n_rows_a, const int n_cols_a) {
+void init_seq(double *a, const unsigned n_rows_a, const unsigned n_cols_a) {
     for (size_t i = 0; i < n_rows_a; i++) {
         for (size_t j = 0; j < n_cols_a; j++) {
             a[i*n_cols_a + j] = i*n_cols_a + j;
@@ -18,7 +18,7 @@ void init_seq(double *a, const int n_rows_a, const int n_cols_a) {
 }
 
 /* Initializes vector or matrix, randomly. */
-void init_rand(double *a, const int n_rows_a, const int n_cols_a) {
+void init_rand(double *a, const unsigned n_rows_a, const unsigned n_cols_a) {
     for (size_t i = 0; i < n_rows_a; i++) {
         for (size_t j = 0; j < n_cols_a; j++) {
             a[i*n_cols_a + j] = rand() / (double)RAND_MAX;
@@ -28,7 +28,8 @@ void init_rand(double *a, const int n_rows_a, const int n_cols_a) {
 
 /* Dot product of two arrays, or matrix product
  * Allocates and returns an array. */
-double *dot(const double *a, const int n_rows_a, const int n_cols_a, const double *b, const int n_rows_b, const int n_cols_b) {
+double *dot(const double *a, const unsigned n_rows_a, const unsigned n_cols_a,\
+            const double *b, const unsigned n_rows_b, const unsigned n_cols_b) {
     if (n_cols_a != n_rows_b) {
         printf("#columns A must be equal to #rows B!\n");
         system("pause");
@@ -56,7 +57,7 @@ double *dot(const double *a, const int n_rows_a, const int n_cols_a, const doubl
 }
 
 /* Prints vector, or matrix. */
-void print(const double *a, const int n_rows_a, const int n_cols_a) {
+void print(const double *a, const unsigned n_rows_a, const unsigned n_cols_a) {
     for (size_t i = 0; i < n_rows_a; i++) {
         for (size_t j = 0; j < n_cols_a; j++) {
             printf("%8.3f ", a[i*n_cols_a + j]);
@@ -71,10 +72,10 @@ int main(int argc, char *argv[]) {
     time_t t;
     srand((unsigned)time(&t));
 
-    const int n_rows_a = 4;
-    const int n_cols_a = 3;
-    const int n_rows_b = 3;
-    const int n_cols_b = 2;
+    const unsigned n_rows_a = 4;
+    const unsigned n_cols_a = 3;
+    const unsigned n_rows_b = 3;
+    const unsigned n_cols_b = 2;
 
     double *a = malloc(n_rows_a * n_cols_a * sizeof(*a));
     double *b = malloc(n_rows_b * n_cols_b * sizeof(*b));
